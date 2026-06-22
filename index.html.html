@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Thiri Kyaw - Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        li { list-style: none; }
+
+        /* NAVIGATION BAR */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .logo span { color: #0284c7; }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .nav-links a:hover { color: #0284c7; }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 160px 20px 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content { flex: 1; }
+
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span { color: #0284c7; }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+
+        .btn-container { display: flex; gap: 15px; }
+
+        .btn-primary {
+            background-color: #0284c7;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #0369a1;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid #cbd5e1;
+            color: #475569;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover { background-color: #f1f5f9; }
+
+        /* PROFILE IMAGE WITH IMAGE.PNG INTEGRATION */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img-box {
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
+            animation: morph 8s ease-in-out infinite alternate;
+            overflow: hidden; /* ပုံထည့်လိုက်တဲ့အခါ Blob ပုံစံအတိုင်းပဲ ဖြတ်ပေးရန် */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #38bdf8, #0369a1);
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ပုံမရှုံ့သွားဘဲ ကွက်တိဖြစ်နေစေရန် */
+            border-radius: inherit;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+
+        /* SECTIONS GENERAL STYLES */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 60px; height: 4px;
+            background-color: #0284c7;
+            border-radius: 2px;
+        }
+
+        .about-text { font-size: 17px; color: #475569; max-width: 800px; }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skills-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-card h3 { color: #0f172a; margin-bottom: 20px; font-size: 20px; }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .skills-list li::before {
+            content: "✓";
+            position: absolute; left: 0;
+            color: #0284c7; font-weight: bold;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+        }
+
+        .project-img-placeholder {
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .project-info { padding: 25px; }
+        .project-info h3 { font-size: 20px; color: #0f172a; margin-bottom: 10px; }
+        .project-info p { color: #475569; font-size: 15px; margin-bottom: 20px; }
+
+        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag {
+            background-color: #f1f5f9; color: #64748b;
+            padding: 4px 12px; border-radius: 4px; font-size: 13px;
+        }
+
+        /* EDUCATION TIMELINE */
+        .edu-timeline { display: flex; flex-direction: column; gap: 25px; }
+        
+        .timeline-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #0284c7;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
+        }
+
+        .timeline-sub { color: #0284c7; font-weight: 600; margin: 5px 0 10px 0; }
+        .timeline-date { color: #94a3b8; font-size: 14px; }
+
+        /* CONTACT SECTION */
+        .contact-container {
+            background-color: #0f172a;
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact-container p { color: #94a3b8; max-width: 600px; margin: 0 auto 40px auto; }
+        .social-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        .social-btn {
+            background-color: rgba(255,255,255,0.05);
+            color: white; padding: 12px 30px; border-radius: 8px; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover { background-color: white; color: #0f172a; transform: translateY(-3px); }
+
+        footer { text-align: center; padding: 40px 20px; color: #64748b; font-size: 14px; background-color: white; border-top: 1px solid #e2e8f0; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .btn-container { justify-content: center; }
+            .section-title::after { left: 50%; transform: translateX(-50%); }
+            .section-title { text-align: center; }
+            .profile-img-box { width: 280px; height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">A Thiri<span>Kyaw</span></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION WITH USER PHOTO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge">Welcome to my Portfolio</span>
+            <h1>Hi, I'm <span>A Thiri Kyaw</span></h1>
+            <p>Founder of Technology & Knowledge Hub | Educator & Content Creator | Computer Science Student at UoPeople</p>
+            <div class="btn-container">
+                <a href="#projects" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <!-- image.png ကို ဤနေရာတွင် အစားထိုးထည့်သွင်းထားပါသည် -->
+            <div class="profile-img-box">
+                <img src="image.jpg.png" alt="A Thiri Kyaw">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">📌 About Me</h2>
+        <p class="about-text">
+            Driven by a mission to make technical education accessible, I founded the <strong>Technology & Knowledge Hub</strong>. My work focuses on bridging the gap between Computer Science, Information Technology, and English language proficiency. I love designing engaging curriculums, building web projects, and creating impactful educational content to empower the next generation of tech learners.
+        </p>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">🛠️ Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skills-card">
+                <h3>Technical & Web Dev</h3>
+                <ul class="skills-list">
+                    <li>HTML5 / CSS3 / JavaScript</li>
+                    <li>Web Hosting (GitHub Pages, Google Sites)</li>
+                    <li>Python Programming</li>
+                </ul>
+            </div>
+            <div class="skills-card">
+                <h3>Content Creation</h3>
+                <ul class="skills-list">
+                    <li>Video Editing (CapCut)</li>
+                    <li>Social Media (LinkedIn, YouTube, Reels)</li>
+                    <li>Audience Growth & Analytics</li>
+                </ul>
+            </div>
+            <div class="skills-card">
+                <h3>Education & Languages</h3>
+                <ul class="skills-list">
+                    <li>Curriculum Design (IT & CS)</li>
+                    <li>OSSU Learning Framework</li>
+                    <li>English Instruction (MET Certified)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title">🚀 Experience & Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img-placeholder">Technology & Knowledge Hub</div>
+                <div class="project-info">
+                    <h3>Founder & Lead Instructor</h3>
+                    <p>Launched and managed an educational platform dedicated to technology literacy. Designed beginner-friendly Python & Web Dev curriculums.</p>
+                    <div class="project-tags">
+                        <span class="tag">Education</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Management</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img-placeholder">Content Creation & Analytics</div>
+                <div class="project-info">
+                    <h3>Video Production & Growth</h3>
+                    <p>Produced, edited, and optimized educational video content utilizing analytics to improve viewer engagement across platforms.</p>
+                    <div class="project-tags">
+                        <span class="tag">CapCut</span>
+                        <span class="tag">YouTube</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title">🎓 Education & Certifications</h2>
+        <div class="edu-timeline">
+            <div class="timeline-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <p class="timeline-sub">University of the People (UoPeople)</p>
+                <p class="timeline-date">Enrolled (Term 5 Start: June 2026)</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Michigan English Test (MET) Certificate</h3>
+                <p class="timeline-sub">English Language Proficiency</p>
+                <p class="timeline-date">Issued: April 1, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>📬 Let's Connect!</h2>
+            <p>I am always open to collaborations, educational partnerships, or discussing anything tech and content creation. Feel free to reach out!</p>
+            <div class="social-links">
+                <a href="mailto:kyawathiri@gmail.com" class="social-btn">Email Me</a>
+                <a href="https://www.linkedin.com/in/athiri-kyaw-346841403
+" target="_blank" class="social-btn">LinkedIn</a>
+      <a href="https://athirikyaw2.github.io/educational-website/ " target="_blank" class="social-btn">Github</a>          
+<a href=" https://sites.google.com/view/knowledge-hub-mm/home" target="_blank" class="social-btn">Google Site</a>
+                <a href="https://youtube.com/@technologyknowledgehubmm?si=hmVQZevAnZPatWqn" target="_blank" class="social-btn">YouTube</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 A Thiri Kyaw. All Rights Reserved. Built with HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
