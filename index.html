@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Thiri Kyaw - Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        li { list-style: none; }
+
+        /* NAVIGATION BAR */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .logo span { color: #0284c7; }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .nav-links a:hover { color: #0284c7; }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 160px 20px 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content { flex: 1; }
+
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span { color: #0284c7; }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+
+        .btn-container { display: flex; gap: 15px; }
+
+        .btn-primary {
+            background-color: #0284c7;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #0369a1;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid #cbd5e1;
+            color: #475569;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover { background-color: #f1f5f9; }
+
+        /* PROFILE IMAGE */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img-box {
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
+            animation: morph 8s ease-in-out infinite alternate;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #38bdf8, #0369a1);
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+
+        /* SECTIONS GENERAL STYLES */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 60px; height: 4px;
+            background-color: #0284c7;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .about-text { font-size: 17px; color: #475569; max-width: 800px; }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skills-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-card h3 { color: #0f172a; margin-bottom: 20px; font-size: 20px; }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .skills-list li::before {
+            content: "✓";
+            position: absolute; left: 0;
+            color: #0284c7; font-weight: bold;
+        }
+
+        /* SCHOLARSHIP TABLE STYLING */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            background-color: white;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* PROJECTS & SAMPLES */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+        }
+
+        .project-info { padding: 25px; }
+        .project-info h3 { font-size: 20px; color: #0f172a; margin-bottom: 10px; }
+        .project-info p { color: #475569; font-size: 15px; margin-bottom: 20px; }
+
+        .project-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag {
+            background-color: #e0f2fe; color: #0284c7;
+            padding: 4px 12px; border-radius: 4px; font-size: 13px;
+            font-weight: 600;
+        }
+
+        .sample-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #334155;
+            white-space: pre-line;
+            margin-top: 10px;
+        }
+
+        /* EDUCATION TIMELINE */
+        .edu-timeline { display: flex; flex-direction: column; gap: 25px; }
+        
+        .timeline-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #0284c7;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-top: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
+        }
+
+        .timeline-sub { color: #0284c7; font-weight: 600; margin: 5px 0 10px 0; }
+        .timeline-date { color: #94a3b8; font-size: 14px; }
+
+        /* CONTACT SECTION */
+        .contact-container {
+            background-color: #0f172a;
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact-container p { color: #94a3b8; max-width: 600px; margin: 0 auto 40px auto; }
+        .social-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        .social-btn {
+            background-color: rgba(255,255,255,0.05);
+            color: white; padding: 12px 30px; border-radius: 8px; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover { background-color: white; color: #0f172a; transform: translateY(-3px); }
+
+        footer { text-align: center; padding: 40px 20px; color: #64748b; font-size: 14px; background-color: white; border-top: 1px solid #e2e8f0; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 968px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .btn-container { justify-content: center; }
+            .section-title::after { left: 50%; transform: translateX(-50%); }
+            .section-title { text-align: center; }
+            .profile-img-box { width: 280px; height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">A Thiri<span>Kyaw</span></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#research">Research</a>
+                <a href="#samples">Content Samples</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge">University Pathway & Scholarship Content Portfolio</span>
+            <h1>Hi, I'm <span>A Thiri Kyaw</span></h1>
+            <p>Founder of Technology & Knowledge Hub | Specialized Educational Content Writer & University Pathway Researcher</p>
+            <div class="btn-container">
+                <a href="#research" class="btn-primary">View My Research</a>
+                <a href="#contact" class="btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <div class="profile-img-box">
+                <!-- သင့်ပုံပေါ်စေရန် ဤနေရာတွင် image.png ဟု အမည်ပေးထားသော ပုံကို ထည့်သွင်းထားသည် -->
+                <img src="image.png" alt="A Thiri Kyaw">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">📌 About Me</h2>
+        <p class="about-text">
+            I am an educational platform founder and curriculum designer passionate about making international academic opportunities transparent and accessible. I specialize in deep-dive data verification of global university pathways, scholarship rules, and immigration framework structures. My core skill lies in transforming complex compliance guidelines into engaging, strategic digital copy that helps prospective students confidently plan their international studies.
+        </p>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">🛠️ Core Expertises</h2>
+        <div class="skills-grid">
+            <div class="skills-card">
+                <h3>Pathway & Educational Research</h3>
+                <ul class="skills-list">
+                    <li>Entry Requirement Scraper (UK, AU, EU)</li>
+                    <li>Foundation & IYOne Mapping</li>
+                    <li>Scholarship Data Analysis Matrix</li>
+                </ul>
+            </div>
+            <div class="skills-card">
+                <h3>Educational Copywriting</h3>
+                <ul class="skills-list">
+                    <li>Gen-Z Focused Social Copywriting</li>
+                    <li>B2C Student Guideline Blogs</li>
+                    <li>Complex Data Translation</li>
+                </ul>
+            </div>
+            <div class="skills-card">
+                <h3>Digital & Management Skills</h3>
+                <ul class="skills-list">
+                    <li>Audience Insights & Growth</li>
+                    <li>Content Optimization</li>
+                    <li>Curriculum Development Architecture</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH MATRIX SECTION -->
+    <section id="research">
+        <h2 class="section-title">🔍 Section 1: Global Scholarship Research & Analysis Matrix</h2>
+        <p class="section-subtitle">Demonstrating data mining capabilities, accuracy, and structural analysis of global fully funded scholarships.</p>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Scholarship & Country</th>
+                        <th style="width: 35%;">Target Audience & Entry Criteria</th>
+                        <th style="width: 40%;">Strategic Content & Essay Insights</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Erasmus Mundus Joint Masters</strong><br>(European Union)</td>
+                        <td>• Open to all nationalities globally.<br>• Requires a primary undergraduate degree.<br>• No strict age limitations.</td>
+                        <td><strong>Core Strategy:</strong> Content must emphasize interdisciplinary academic mobility. The Statement of Purpose (SOP) needs to prove how the applicant adapts to studying in multiple distinct European ecosystems.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Australia Awards Scholarship</strong><br>(Australia - DFAT)</td>
+                        <td>• Citizens of eligible partner developing nations.<br>• Minimum 2 years of relevant professional work experience.<br>• Academic IELTS 6.5 minimum target.</td>
+                        <td><strong>Core Strategy:</strong> Copy must directly bridge the "Development Impact" gap. Writers must guide applicants to explicitly tie their desired course to structural socio-economic development goals in their home country.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MEXT Scholarship</strong><br>(Government of Japan)</td>
+                        <td>• Undergraduate & Graduate research levels.<br>• Under 35 years of age.<br>• Outstanding academic transcripts required.</td>
+                        <td><strong>Core Strategy:</strong> Highlighting the critical 2-stage embassy screening. Focus must be placed on rigorous written exam preparation (Math/Japanese) and building professional pitches to prospective university supervisors.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CONTENT SAMPLES SECTION -->
+    <section id="samples">
+        <h2 class="section-title">✍️ Section 2: Educational Content Writing & Copywriting Samples</h2>
+        <p class="section-subtitle">Curated student-facing copy exemplifying clarity, engagement, and strategic value propositions.</p>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Sample A: Social Media Copy (High Engagement)</h3>
+                    <div class="tag" style="margin-bottom: 10px;">Topic: Direct Entry vs. Pathway Programs</div>
+                    <div class="sample-box">
+                        Many international students and parents believe that entering a university via a Pathway program is simply an expensive detour. **This is a misconception.** 
+
+                        When strategically researched, an International Foundation Year offers massive advantages:
+                        1. **Financial Savings:** Pathway tuitions can be $3,000 to $5,000 cheaper than direct first-year university tuition fees.
+                        2. **Lowered Entry Barriers:** They accept flexible GPA targets and realistic English proficiency scores (e.g., IELTS 5.5).
+                        3. **Guaranteed Progression:** Successful completion guarantees direct entry into the second year of a Bachelor's degree.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Sample B: Structured Resource Blog</h3>
+                    <div class="tag" style="margin-bottom: 10px;">Topic: Kaplan vs. Study Group UK</div>
+                    <div class="sample-box">
+                        Choosing the right pathway provider dictates your entire university trajectory in the United Kingdom:
+
+                        * **Kaplan International Pathways:** Exceptional for students aiming for elite prestigious institutions. Maintains strong partnerships with top Russell Group universities, including the University of Birmingham and University of Nottingham.
+                        * **Study Group:** Renowned for its dedicated, on-campus international study centers. Bridges the gap for top-tier universities like Durham University and the University of Sheffield.
+
+                        **Expert Tip:** Always verify if your provider offers a *Joint CAS*, which grants a single student visa covering both the pathway and your main degree program.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title">🎓 Education & Core Qualifications</h2>
+        <div class="edu-timeline">
+            <div class="timeline-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <p class="timeline-sub">University of the People (UoPeople)</p>
+                <p class="timeline-date">Enrolled (Term 5 Start: June 2026)</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Founder & Executive Operator</h3>
+                <p class="timeline-sub">Technology & Knowledge Hub</p>
+                <p class="timeline-date">Educational Platform Management & Curriculum Content Architecture</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>📬 Let's Connect!</h2>
+            <p>I am always open to editorial collaborations, research alignments, or full-time opportunities in the international education sector.</p>
+            <div class="social-links">
+                <a href="mailto:kyawathiri@gmail.com" class="social-btn">Email Me</a>
+                <a href="https://www.linkedin.com/in/athiri-kyaw-346841403" target="_blank" class="social-btn">LinkedIn</a>
+                <a href="https://athirikyaw2.github.io/educational-website/" target="_blank" class="social-btn">Github</a>
+                <a href="https://sites.google.com/view/knowledge-hub-mm/home" target="_blank" class="social-btn">Google Site</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 A Thiri Kyaw. Structured & Optimized for University Research & Content Specialist Review.</p>
+    </footer>
+
+</body>
+</html>
 
